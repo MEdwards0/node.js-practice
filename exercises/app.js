@@ -5,8 +5,32 @@ const _ = require('lodash');
 
 // var command = process.argv[2];
 
-const argv = yargs.argv;
-var command = argv._[0]; // using lodash -> _ (underscore) to represent 
+const argv = yargs
+    .options({
+        c: {
+            demand: true,
+            alias: 'command',
+            describe: 'enter list, add, get or remove',
+            string: true
+        },
+        t: {
+            alias: 'title',
+            sting: true,
+
+        },
+        a: {
+            alias: 'album',
+            string: true
+        },
+        ar: {
+            alias: 'artist',
+            string: true
+        }
+    })
+    .help()
+    .alias('help', 'h')
+.argv;
+var command = argv.command; // using lodash -> _ (underscore) to represent 
 
 switch (command) {
     case 'add':
